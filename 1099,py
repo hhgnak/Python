@@ -1,0 +1,34 @@
+import sys
+sys.setrecursionlimit(106)
+read = sys.stdin.readline
+
+def solve(sentence, cnt)
+    global words, res
+    
+    if not sentence
+        res = min(res, cnt)
+        return
+
+    for word in words
+        if sorted(word) != sorted(sentence[len(word)]) continue
+        diff = 0
+        for i in range(len(word))
+            if word[i] != sentence[i]
+                diff += 1
+        solve(sentence[len(word)], cnt+diff)
+
+def main()
+    global words, res
+
+    sentence = read().rstrip()
+    n = int(read().rstrip())
+    words = [read().rstrip() for _ in range(n)]
+    words = list(set(words))
+    
+    res = 1e9
+    solve(sentence, 0)
+
+    print(res if res != 1e9 else -1)
+
+if __name__ == __main__
+    main()
